@@ -1,0 +1,106 @@
+/* Reset & Pengaturan Dasar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f4f9; /* Warna latar belakang abu-abu sangat muda */
+    color: #333;
+    line-height: 1.6;
+}
+
+/* --- Styling Header & Navigasi --- */
+header {
+    background-color: #ffffff;
+    padding: 20px 8% ; /* Jarak kiri-kanan agar rapi */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    position: sticky; /* Membuat navbar menempel di atas saat di-scroll */
+    top: 0;
+    z-index: 100;
+}
+
+header h1 {
+    color: #005f73; /* Biru laut gelap */
+    font-size: 24px;
+    letter-spacing: 1px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px; /* Jarak antar menu */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #0a9396; /* Biru tosca saat di-hover */
+}
+
+/* --- Styling Hero Section (Beranda) --- */
+#beranda {
+    /* Sementara menggunakan gambar pantai dari Unsplash sebagai placeholder */
+    background: linear-gradient(rgba(0, 40, 60, 0.6), rgba(0, 40, 60, 0.6)), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80') center/cover;
+    height: 85vh; /* Mengambil 85% tinggi layar */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+    padding: 0 20px;
+}
+
+#beranda h2 {
+    font-size: 52px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+#beranda p {
+    font-size: 20px;
+    margin-bottom: 40px;
+    max-width: 700px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+#beranda button {
+    padding: 15px 40px;
+    font-size: 18px;
+    background-color: #ee9b00; /* Kuning/oranye estetik */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+#beranda button:hover {
+    background-color: #ca6702;
+    transform: translateY(-2px); /* Efek tombol naik sedikit saat di-hover */
+}
+
+/* --- Styling Bagian Daya Tarik --- */
+#daya-tarik {
+    padding: 80px 8%;
+    text-align: center;
+}
+
+#daya-tarik h2 {
+    color: #005f73;
+    font-size: 36px;
+    margin-bottom: 50px;
+}
