@@ -1375,6 +1375,7 @@ html {
 @media (max-width: 768px) {
     body {
         overflow-x: hidden;
+        background-attachment: scroll;
     }
 
     header {
@@ -1410,6 +1411,11 @@ html {
         min-height: 88vh;
         height: auto;
         padding: 120px 18px 60px;
+        background: linear-gradient(180deg, rgba(0, 40, 60, 0.82), rgba(0, 40, 60, 0.9)), url('./sunset2.jpeg') center/cover no-repeat;
+    }
+
+    .hero-video {
+        display: none;
     }
     
     #beranda h2 {
@@ -1603,5 +1609,48 @@ html {
 
     footer {
         padding: 30px 15px;
+    }
+}
+
+@media (max-width: 768px) and (-webkit-min-device-pixel-ratio: 0) {
+    header,
+    .btn-secondary,
+    #daya-tarik,
+    #kenapa,
+    .info-section,
+    .galeri-section,
+    .sejarah-section,
+    .gallery-overlay {
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+    }
+
+    section {
+        animation: none;
+    }
+
+    .particles {
+        display: none;
+    }
+
+    .video-modal {
+        padding: 12px;
+        align-items: center;
+    }
+
+    .video-modal-content {
+        width: 100%;
+        border-radius: 16px;
+    }
+
+    .video-modal-content video {
+        max-height: 72vh;
+        border-radius: 12px;
+    }
+
+    .video-modal-close {
+        top: 8px;
+        right: 8px;
+        z-index: 2;
     }
 }
