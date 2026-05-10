@@ -1373,43 +1373,102 @@ html {
     scroll-behavior: smooth;
 }
 @media (max-width: 768px) {
+    body {
+        overflow-x: hidden;
+    }
+
     header {
-        padding: 15px 5%;
+        flex-direction: column;
+        gap: 14px;
+        padding: 14px 5%;
     }
     
     header h1 {
-        font-size: 24px;
+        font-size: 20px;
+        text-align: center;
+    }
+
+    nav {
+        width: 100%;
+        overflow-x: auto;
     }
     
     nav ul {
-        gap: 20px;
+        gap: 8px;
+        justify-content: flex-start;
+        padding-bottom: 4px;
+        white-space: nowrap;
+    }
+
+    nav ul li a {
+        display: block;
+        padding: 8px 12px;
+        font-size: 14px;
     }
     
     #beranda {
-        height: 80vh;
-        padding: 0 15px;
+        min-height: 88vh;
+        height: auto;
+        padding: 120px 18px 60px;
     }
     
     #beranda h2 {
-        font-size: 40px;
+        font-size: clamp(2.1rem, 12vw, 3rem);
+        letter-spacing: 0.5px;
     }
     
-    #beranda p {
-        font-size: 18px;
+    .hero-subtitle {
+        font-size: 1.05rem;
+    }
+
+    .hero-description {
+        font-size: 0.98rem;
+        margin-bottom: 26px;
     }
     
-    #beranda button {
-        padding: 15px 35px;
-        font-size: 16px;
+    .hero-buttons {
+        width: 100%;
+        align-items: stretch;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+        padding: 14px 18px;
+    }
+
+    .hero-stats {
+        width: 100%;
+        gap: 12px;
+        margin-top: 28px;
+    }
+
+    .stat-item {
+        padding: 14px 18px;
     }
     
-    #daya-tarik, .galeri-section, .sejarah-section, #kenapa {
-        padding: 60px 5%;
-        margin: 30px 0;
+    #daya-tarik,
+    #kenapa,
+    .info-section,
+    .galeri-section,
+    .faq-section,
+    .sejarah-section {
+        padding: 56px 5%;
+        margin: 24px 0;
+        border-radius: 22px;
+    }
+
+    .section-header {
+        margin-bottom: 32px;
     }
     
-    #daya-tarik h2, .galeri-section h2, .sejarah-text h2 {
-        font-size: 32px;
+    .section-header h2,
+    #kenapa h2,
+    .galeri-section h2,
+    .sejarah-text h2 {
+        font-size: clamp(1.8rem, 9vw, 2.25rem);
     }
     
     .card-container {
@@ -1434,7 +1493,114 @@ html {
     .sejarah-text h3 {
         font-size: 22px;
     }
-    
+
+    .highlights-grid,
+    .card-container,
+    .info-grid,
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .highlight-card,
+    .card,
+    .info-card {
+        width: 100%;
+        min-height: auto;
+        padding: 0;
+        border-radius: 20px;
+        background: white;
+        overflow: hidden;
+    }
+
+    .highlight-image,
+    .card-image,
+    .info-image {
+        height: 220px;
+        min-height: 220px;
+        border-radius: 20px 20px 0 0;
+    }
+
+    .card-overlay {
+        position: static;
+        min-height: auto;
+        padding: 18px;
+        background: white;
+        color: #333;
+    }
+
+    .highlight-card:hover .card-overlay,
+    .card:hover .card-overlay,
+    .info-card:hover .card-overlay {
+        background: white;
+    }
+
+    .card-label {
+        margin-bottom: 10px;
+        box-shadow: none;
+    }
+
+    .highlight-card .card-overlay h3,
+    .card .card-overlay h3,
+    .info-card .card-overlay h3 {
+        color: #005f73;
+        font-size: 1.25rem;
+        text-shadow: none;
+    }
+
+    .highlight-card .card-overlay p,
+    .card .card-overlay p,
+    .info-card .card-overlay p,
+    #kenapa .card .card-overlay p {
+        position: static;
+        color: #556;
+        opacity: 1;
+        max-height: none;
+        overflow: visible;
+        margin: 0;
+        font-size: 0.98rem;
+    }
+
+    #kenapa .card {
+        padding-bottom: 0;
+    }
+
+    .maps-preview {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 16px;
+        border-radius: 22px;
+    }
+
+    .maps-preview iframe {
+        min-height: 260px;
+    }
+
+    .visit-cta {
+        padding: 28px 18px;
+        border-radius: 22px;
+    }
+
+    .cta-actions {
+        flex-direction: column;
+    }
+
+    .faq-item summary {
+        padding: 18px;
+        font-size: 1rem;
+    }
+
+    .faq-item p {
+        padding: 0 18px 18px;
+    }
+
+    .floating-whatsapp {
+        width: 52px;
+        height: 52px;
+        right: 16px;
+        bottom: 16px;
+    }
+
     footer {
         padding: 30px 15px;
     }
