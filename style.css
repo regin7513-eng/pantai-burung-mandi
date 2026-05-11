@@ -851,11 +851,12 @@ nav ul li a:hover {
 }
 
 .floating-socials {
-    position: fixed;
-    right: 22px;
-    bottom: 22px;
-    display: flex;
-    gap: 12px;
+    position: fixed !important;
+    right: 22px !important;
+    bottom: 22px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 12px !important;
     z-index: 1800;
 }
 
@@ -1664,9 +1665,9 @@ html {
     }
 
     .floating-socials {
-        right: 16px;
-        bottom: 16px;
-        gap: 10px;
+        right: 16px !important;
+        bottom: 16px !important;
+        gap: 10px !important;
     }
 
     .floating-whatsapp,
