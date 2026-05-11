@@ -850,25 +850,40 @@ nav ul li a:hover {
     line-height: 1.7;
 }
 
-.floating-whatsapp {
+.floating-socials {
     position: fixed;
     right: 22px;
     bottom: 22px;
+    display: flex;
+    gap: 12px;
+    z-index: 1800;
+}
+
+.floating-whatsapp,
+.floating-instagram {
     width: 58px;
     height: 58px;
     border-radius: 50%;
     display: grid;
     place-items: center;
-    background: #25d366;
     color: white;
     text-decoration: none;
     font-weight: 900;
-    z-index: 1800;
-    box-shadow: 0 14px 35px rgba(37, 211, 102, 0.38);
     transition: transform 0.3s ease;
 }
 
-.floating-whatsapp:hover {
+.floating-whatsapp {
+    background: #25d366;
+    box-shadow: 0 14px 35px rgba(37, 211, 102, 0.38);
+}
+
+.floating-instagram {
+    background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af);
+    box-shadow: 0 14px 35px rgba(221, 42, 123, 0.34);
+}
+
+.floating-whatsapp:hover,
+.floating-instagram:hover {
     transform: translateY(-5px) scale(1.06);
 }
 
@@ -1061,11 +1076,11 @@ nav ul li a:hover {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.85);
-    justify-content: center;
+    background: rgba(0, 0, 0, 0.88);
+    z-index: 2000;
     align-items: center;
-    z-index: 200;
-    padding: 20px;
+    justify-content: center;
+    padding: 28px 96px;
 }
 
 .lightbox.visible {
@@ -1073,18 +1088,23 @@ nav ul li a:hover {
 }
 
 .lightbox-inner {
-    max-width: 1100px;
+    max-width: min(1400px, 100%);
     width: 100%;
-    max-height: 90vh;
+    height: 88vh;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .lightbox img {
     width: 100%;
-    height: auto;
-    border-radius: 20px;
+    height: calc(88vh - 56px);
     object-fit: contain;
+    border-radius: 20px;
+    display: block;
     box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.35);
 }
 
 .lightbox-caption {
@@ -1129,11 +1149,11 @@ nav ul li a:hover {
 }
 
 .lightbox-prev {
-    left: 10px;
+    left: 28px;
 }
 
 .lightbox-next {
-    right: 10px;
+    right: 28px;
 }
 
 .lightbox-close:hover,
@@ -1144,14 +1164,39 @@ nav ul li a:hover {
 }
 
 @media (max-width: 768px) {
+    .lightbox {
+        padding: 16px;
+    }
+
+    .lightbox-inner {
+        height: 82vh;
+    }
+
+    .lightbox img {
+        height: calc(82vh - 52px);
+        border-radius: 14px;
+    }
+
     .lightbox-prev,
     .lightbox-next {
         width: 50px;
         height: 50px;
+        top: auto;
+        bottom: 26px;
+        transform: none;
+    }
+
+    .lightbox-prev {
+        left: 18px;
+    }
+
+    .lightbox-next {
+        right: 18px;
     }
 
     .lightbox-caption {
         font-size: 15px;
+        padding: 0 64px;
     }
 }
 
@@ -1271,6 +1316,24 @@ footer p {
     letter-spacing: 1px;
     opacity: 0.9;
     font-weight: 300;
+}
+
+.footer-instagram {
+    display: inline-flex;
+    margin-top: 14px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af);
+    box-shadow: 0 10px 25px rgba(221, 42, 123, 0.28);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.footer-instagram:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 32px rgba(221, 42, 123, 0.38);
 }
 
 /* --- Particle Background --- */
@@ -1600,11 +1663,16 @@ html {
         padding: 0 18px 18px;
     }
 
-    .floating-whatsapp {
-        width: 52px;
-        height: 52px;
+    .floating-socials {
         right: 16px;
         bottom: 16px;
+        gap: 10px;
+    }
+
+    .floating-whatsapp,
+    .floating-instagram {
+        width: 52px;
+        height: 52px;
     }
 
     footer {
