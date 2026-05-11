@@ -78,7 +78,7 @@ nav ul li a:hover {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    z-index: -1;
+    z-index: 0;
     opacity: 0.9;
     transform: translateZ(0);
     will-change: transform;
@@ -90,17 +90,17 @@ nav ul li a:hover {
     position: absolute;
     inset: 0;
     background: linear-gradient(180deg, rgba(0, 20, 35, 0.72), rgba(0, 40, 60, 0.9));
-    z-index: 0;
+    z-index: 1;
 }
 
 .hero-content,
 .hero-stats {
     position: relative;
-    z-index: 1;
+    z-index: 2;
 }
 .hero-content {
     max-width: 800px;
-    z-index: 2;
+    z-index: 3;
 }
 
 #beranda h2 {
@@ -1478,7 +1478,7 @@ html {
         min-height: 88vh;
         height: auto;
         padding: 120px 18px 60px;
-        background: linear-gradient(180deg, rgba(0, 40, 60, 0.82), rgba(0, 40, 60, 0.9)), url('./sunset2.jpeg') center/cover no-repeat;
+        background: #00283c;
     }
 
     .hero-video {

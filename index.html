@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pantai Burung Mandi | Pesona Belitung Timur</title>
-    <link rel="stylesheet" href="style.css?v=5">
+    <link rel="stylesheet" href="style.css?v=6">
 </head>
 <body>
 
@@ -34,8 +34,8 @@
 
     <!-- Bagian Hero Section -->
     <section id="beranda">
-        <video autoplay muted loop playsinline preload="auto" poster="./sunset2.jpeg" class="hero-video">
-            <source src="./WhatsApp Video 2026-05-03 at 13.02.49.mp4" type="video/mp4">
+        <video autoplay muted loop playsinline webkit-playsinline preload="auto" poster="./sunset2.jpeg" class="hero-video">
+            <source src="./WhatsApp%20Video%202026-05-03%20at%2013.02.49.mp4" type="video/mp4">
             Video background tidak didukung pada browser ini.
         </video>
         <div class="hero-content">
@@ -424,9 +424,20 @@
         const prevButton = document.querySelector('.lightbox-prev');
         const nextButton = document.querySelector('.lightbox-next');
 
+        highlightVideo.addEventListener('error', () => {
+            highlightVideoModal.classList.add('visible');
+            document.body.style.overflow = 'hidden';
+        });
+
         if (heroVideo) {
             heroVideo.muted = true;
             heroVideo.playsInline = true;
+            heroVideo.setAttribute('webkit-playsinline', '');
+
+            if (!heroVideo.currentSrc) {
+                heroVideo.src = './WhatsApp%20Video%202026-05-03%20at%2013.02.49.mp4';
+                heroVideo.load();
+            }
 
             const playHeroVideo = () => {
                 const playPromise = heroVideo.play();
@@ -581,13 +592,15 @@
         });
 
         function openHighlightVideo(videoSource) {
+            const normalizedVideoSource = videoSource.startsWith('./') ? videoSource : `./${videoSource}`;
             highlightVideo.pause();
             highlightVideo.removeAttribute('src');
             highlightVideoSource.removeAttribute('src');
             highlightVideo.load();
             highlightVideo.muted = false;
             highlightVideo.playsInline = true;
-            highlightVideoSource.src = videoSource;
+            highlightVideo.src = normalizedVideoSource;
+            highlightVideoSource.src = normalizedVideoSource;
             highlightVideoModal.classList.add('visible');
             document.body.style.overflow = 'hidden';
             highlightVideo.load();
@@ -599,6 +612,7 @@
                 }
             };
 
+            playSelectedVideo();
             highlightVideo.addEventListener('canplay', () => {
                 playSelectedVideo();
             }, { once: true });
