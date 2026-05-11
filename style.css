@@ -80,6 +80,9 @@ nav ul li a:hover {
     object-fit: cover;
     z-index: -1;
     opacity: 0.9;
+    transform: translateZ(0);
+    will-change: transform;
+    backface-visibility: hidden;
 }
 
 #beranda::after {
@@ -1479,7 +1482,8 @@ html {
     }
 
     .hero-video {
-        display: none;
+        display: block;
+        object-fit: cover;
     }
     
     #beranda h2 {

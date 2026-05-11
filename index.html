@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pantai Burung Mandi | Pesona Belitung Timur</title>
-    <link rel="stylesheet" href="style.css?v=2">
+    <link rel="stylesheet" href="style.css?v=5">
 </head>
 <body>
 
@@ -34,7 +34,7 @@
 
     <!-- Bagian Hero Section -->
     <section id="beranda">
-        <video autoplay muted loop playsinline class="hero-video">
+        <video autoplay muted loop playsinline preload="auto" poster="./sunset2.jpeg" class="hero-video">
             <source src="./WhatsApp Video 2026-05-03 at 13.02.49.mp4" type="video/mp4">
             Video background tidak didukung pada browser ini.
         </video>
@@ -329,7 +329,7 @@
     <div class="video-modal" id="highlight-video-modal">
         <div class="video-modal-content">
             <button class="video-modal-close" aria-label="Tutup video">×</button>
-            <video id="highlight-video" controls playsinline preload="metadata">
+            <video id="highlight-video" controls playsinline preload="none">
                 <source src="" type="video/mp4">
                 Browser Anda tidak mendukung pemutar video.
             </video>
@@ -412,6 +412,7 @@
         const galleryCards = document.querySelectorAll('.gallery-card');
         const highlightCards = document.querySelectorAll('.highlight-card');
         const experienceCards = document.querySelectorAll('#kenapa .card');
+        const heroVideo = document.querySelector('.hero-video');
         const highlightVideoModal = document.getElementById('highlight-video-modal');
         const highlightVideo = document.getElementById('highlight-video');
         const highlightVideoSource = highlightVideo.querySelector('source');
@@ -422,6 +423,30 @@
         const closeButton = document.querySelector('.lightbox-close');
         const prevButton = document.querySelector('.lightbox-prev');
         const nextButton = document.querySelector('.lightbox-next');
+
+        if (heroVideo) {
+            heroVideo.muted = true;
+            heroVideo.playsInline = true;
+
+            const playHeroVideo = () => {
+                const playPromise = heroVideo.play();
+                if (playPromise) {
+                    playPromise.catch(() => {});
+                }
+            };
+
+            if (heroVideo.readyState >= 3) {
+                playHeroVideo();
+            } else {
+                heroVideo.addEventListener('canplay', playHeroVideo, { once: true });
+            }
+
+            document.addEventListener('visibilitychange', () => {
+                if (!document.hidden && heroVideo.paused) {
+                    playHeroVideo();
+                }
+            });
+        }
 
         const galleryGroups = {
             sunset: [
@@ -557,13 +582,25 @@
 
         function openHighlightVideo(videoSource) {
             highlightVideo.pause();
-            highlightVideo.currentTime = 0;
+            highlightVideo.removeAttribute('src');
+            highlightVideoSource.removeAttribute('src');
+            highlightVideo.load();
+            highlightVideo.muted = false;
+            highlightVideo.playsInline = true;
             highlightVideoSource.src = videoSource;
             highlightVideoModal.classList.add('visible');
             document.body.style.overflow = 'hidden';
             highlightVideo.load();
+
+            const playSelectedVideo = () => {
+                const playPromise = highlightVideo.play();
+                if (playPromise) {
+                    playPromise.catch(() => {});
+                }
+            };
+
             highlightVideo.addEventListener('canplay', () => {
-                highlightVideo.play().catch(() => {});
+                playSelectedVideo();
             }, { once: true });
         }
 
@@ -581,7 +618,9 @@
 
         function closeHighlightVideo() {
             highlightVideo.pause();
-            highlightVideo.currentTime = 0;
+            highlightVideo.removeAttribute('src');
+            highlightVideoSource.removeAttribute('src');
+            highlightVideo.load();
             highlightVideoModal.classList.remove('visible');
             document.body.style.overflow = '';
         }
